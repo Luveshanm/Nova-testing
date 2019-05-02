@@ -2,7 +2,9 @@ import { Injectable, Type } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 
-const url: string = 'https://jsonplaceholder.typicode.com/todos/1';
+const LoginUrl: string = 'https://fabi-web-app.herokuapp.com/authenticatePublicUser';
+const signupUrl: string = 'https://fabi-web-app.herokuapp.com/addPublicUser';
+const formUrl: string = 'https://fabi-web-app.herokuapp.com/submitForm';
 
 
 export interface LoginInfo {
@@ -93,6 +95,7 @@ export class APIconnectionService {
   private err: Error;
   private authentication: UserInfo;
   loggedIn: boolean = false; 
+  sent: boolean = false;
 
   constructor(private http: HttpClient) { }
   submitClientForm(data: FormData) {
@@ -107,6 +110,15 @@ export class APIconnectionService {
     this.loggedIn = true;
   }
 
+  isSent() {
+    return this.sent;
+  }
+
+  setSent(){
+    this.sent = true;
+  }
+
+
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                           SIGNUP
   /**
@@ -116,23 +128,21 @@ export class APIconnectionService {
    */
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   signUp(info: SignupFormData) {
-    info.password = this.SHA1(info.password);
-    info.password = this.SHA1(info.password);
-    this.http.post(JSON.stringify(info), url).subscribe((resp: any) => {
-      if (resp.success === true) {
+    //info.password = this.SHA1(info.password);
 
-        this.returnValue.code =  resp['data.code'];
-        this.returnValue.title = resp['data.title'];
-        this.returnValue.message = resp['data.message'];
-        this.returnValue.result = JSON.stringify(resp['data.result']);
-        return this.returnValue.message;
-      } else {
-        this.err.code =  resp['data.code'];
-        this.err.title = resp['data.title'];
-        this.err.message = resp['data.message'];
-        return this.err.message + ' : not logged in';
-      }
-    });
+    const options = {
+      method: 'POST',
+      url: signupUrl,
+      headers: {
+        'cache-control': 'no-cache',
+        'Content-Type': 'application/json'
+      },
+      body : info,
+      json: true
+    };
+    console.log(options);
+
+    return this.http.request('POST', LoginUrl, options);
   }
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                           LOGIN
@@ -143,37 +153,19 @@ export class APIconnectionService {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   login(info: LoginInfo) {
     // info.password = this.SHA1(info.password);
-    // this.http.post(JSON.stringify(info), url).subscribe((resp: any) => {
-    //   if (resp.success === true) {
-
-    //     this.returnValue.code =  resp['data.code'];
-    //     this.returnValue.title = resp['data.title'];
-    //     this.returnValue.message = resp['data.message'];
-    //     this.returnValue.result = JSON.stringify(resp['data.result']);
-    //     return this.returnValue.message;
-    //   } else {
-    //     this.err.code =  resp['data.code'];
-    //     this.err.title = resp['data.title'];
-    //     this.err.message = resp['data.message'];
-    //     return this.err.message + ' : not logged in';
-    //   }
-    // });
-
-    
-  
-    const options = { 
+    const options = {
       method: 'POST',
-      url: 'LoginUrl',
+      url: LoginUrl,
       headers: {
         'cache-control': 'no-cache',
-        'Content-Type':  'application/json',
-        'Access-Control-Allow-Origin' : '*'
+        'Content-Type': 'application/json',
       },
-      body: info,
+      body : info,
       json: true
     };
+    console.log(options);
 
-    return this.http.post("https://fabi-web-app.herokuapp.com/authenticatePublicUser", info, options);
+    return this.http.request('POST', LoginUrl, options);
 
   }
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -184,21 +176,19 @@ export class APIconnectionService {
    */
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   submitForm(info: ClientFormData) {
-    this.http.post(JSON.stringify(info), url).subscribe((resp: any) => {
-      if (resp.success === true) {
+    const options = {
+      method: 'POST',
+      url: formUrl,
+      headers: {
+        'cache-control': 'no-cache',
+        'Content-Type': 'application/json'
+      },
+      body : info,
+      json: true
+    };
+    console.log(options);
 
-        this.returnValue.code =  resp['data.code'];
-        this.returnValue.title = resp['data.title'];
-        this.returnValue.message = resp['data.message'];
-        this.returnValue.result = JSON.stringify(resp['data.result']);
-        return this.returnValue.message;
-      } else {
-        this.err.code =  resp['data.code'];
-        this.err.title = resp['data.title'];
-        this.err.message = resp['data.message'];
-        return this.err.message + ' : not logged in';
-      }
-    });
+    return this.http.request('POST', LoginUrl, options);
   }
 
 

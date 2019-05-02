@@ -36,17 +36,16 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    // this.submitted = true;
+    this.submitted = true;
     
-    // if (this.loginForm.invalid) {
-    //   return;
-    // }
+    if (this.loginForm.invalid) {
+      return;
+    }
     this.success = true;
     const Lemail = this.loginForm.controls.login_email.value;
     const Lpassw = this.loginForm.controls.login_password.value;
 
     const details: LoginInfo = { email: Lemail, password: Lpassw };
-  
 
     this.api.login(details).subscribe((response: any) => {
       if (response.success == true) {
@@ -73,7 +72,7 @@ export class LoginComponent implements OnInit {
       }
     }, (err: HttpErrorResponse) => {
       //POPUP MESSAGE
-      let dialogRef = this.dialog.open(ErrorComponent, { data: { error: "Could Not Log In", message: err.message } });
+      let dialogRef = this.dialog.open(ErrorComponent, { data: { error: "Could Not Log In" ,message: err.message } });
       dialogRef.afterClosed().subscribe((result) => {
         if (result == "Retry") {
           this.login();
