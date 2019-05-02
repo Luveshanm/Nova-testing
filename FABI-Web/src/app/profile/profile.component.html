@@ -1,0 +1,15 @@
+<div>
+  <div id="profile_header"></div>
+  <div>
+    <form id="profile_details" [formGroup]="profileForm" >
+      <!-- these fields should all be pre-populated -->
+      <input id="profile_name" name="profile_name" type="text"/><img /><br/> <!-- pencil image to indicate that the field can be edited -->
+      <input id="profile_company" name="profile_company" type="text"/><img /><br/> <!-- pencil image to indicate that the field can be edited -->
+      <input id="profile_address" name="profile_address" type="text"/><img /><br/> <!-- pencil image to indicate that the field can be edited -->
+      <input id="profile_email" name="profile_email" type="text"/><img /><br/> <!-- pencil image to indicate that the field can be edited -->
+      <input id="profile_phone" name="profile_phone" type="text"/><img /><br/> <!-- pencil image to indicate that the field can be edited -->
+      <label id="reset_password">Reset Password</label><br/>
+      <button id="save_changes_profile" type="submit">SAVE CHANGES</button><br/>
+    </form>
+  </div>
+</div>
