@@ -27,7 +27,6 @@ module.exports = function (config) {
     autoWatch: true,
     browsers: ['Chrome'],
     singleRun: false,
-    mime: { 'text/x-typescript': ['ts','tsx'] },
     restartOnFileChange: true
   });
 };
