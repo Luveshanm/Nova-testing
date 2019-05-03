@@ -126,16 +126,14 @@ export class SampleFormComponent implements OnInit {
    }
 
   sendForm() {
-    this.submitted = true;
+    // this.submitted = true;
     
-    if (this.sampleForm.invalid) {
-      this.errors = true;
-      return;
-    }
+    // if (this.sampleForm.invalid) {
+    //   this.errors = true;
+    //   return;
+    // }
 
     this.success = true;
-    const Lemail = this.sampleForm.controls.login_email.value;
-    const Lpassw = this.sampleForm.controls.login_password.value;
 
     const formDetails: ClientFormData = {
       name : this.sampleForm.controls.sample_form_name.value,
@@ -191,9 +189,10 @@ export class SampleFormComponent implements OnInit {
   
 
     this.api.submitForm(formDetails).subscribe((response: any) => {
+      console.log("HERE");
       if (response.success == true) {
         //POPUP MESSAGE
-        let snackBarRef = this.snackBar.open("Successfully Logged In", "Dismiss", {
+        let snackBarRef = this.snackBar.open("Successfully Submitted Form", "Dismiss", {
           duration: 3000
         });
 
@@ -203,7 +202,7 @@ export class SampleFormComponent implements OnInit {
 
       } else if (response.success == false) {
         //POPUP MESSAGE
-        let dialogRef = this.dialog.open(ErrorComponent, { data: { error: "Could Not Log In", message: response.message } });
+        let dialogRef = this.dialog.open(ErrorComponent, { data: { error: "Could Not Submit Form", message: response.message } });
         dialogRef.afterClosed().subscribe((result) => {
           if (result == "Retry") {
             this.sendForm();
@@ -215,7 +214,7 @@ export class SampleFormComponent implements OnInit {
       }
     }, (err: HttpErrorResponse) => {
       //POPUP MESSAGE
-      let dialogRef = this.dialog.open(ErrorComponent, { data: { error: "Could Not Log In", message: err.message } });
+      let dialogRef = this.dialog.open(ErrorComponent, { data: { error: "Could Not Submit Form", message: err.message } });
       dialogRef.afterClosed().subscribe((result) => {
         if (result == "Retry") {
           this.sendForm();
