@@ -33,32 +33,36 @@
                 </mat-expansion-panel-header>
 
                 <mat-form-field>
-                  <input matInput id="sample_form_tree_species" formControlName="sample_form_tree_species" type="text" required>
+                  <input matInput id="sample_form_tree_species" formControlName="sample_form_tree_species" type="text"
+                    required>
                   <mat-placeholder class="placeholder">Tree Species Name</mat-placeholder>
                   <br />
                 </mat-form-field>
                 <br />
                 <mat-form-field>
-                  <input matInput id="sample_form_number_samples" formControlName="sample_form_number_samples" type="text"
-                    required>
+                  <input matInput id="sample_form_number_samples" formControlName="sample_form_number_samples"
+                    type="text" required>
                   <mat-placeholder class="placeholder">Number of Samples</mat-placeholder>
                   <br />
                 </mat-form-field>
                 <br />
                 <mat-form-field>
-                  <input matInput id="sample_form_location1" formControlName="sample_form_location1" type="text" required>
+                  <input matInput id="sample_form_location1" formControlName="sample_form_location1" type="text"
+                    required>
                   <mat-placeholder class="placeholder">Area/City/Suburb</mat-placeholder>
                   <br />
                 </mat-form-field>
                 <br />
                 <mat-form-field>
-                  <input matInput id="sample_form_location2" formControlName="sample_form_location2" type="text" required>
+                  <input matInput id="sample_form_location2" formControlName="sample_form_location2" type="text"
+                    required>
                   <mat-placeholder class="placeholder">Estate/street address</mat-placeholder>
                   <br />
                 </mat-form-field>
                 <br />
                 <mat-form-field>
-                  <input matInput id="sample_form_compartment" formControlName="sample_form_compartment" type="text" required>
+                  <input matInput id="sample_form_compartment" formControlName="sample_form_compartment" type="text"
+                    required>
                   <mat-placeholder class="placeholder">Compartment Number</mat-placeholder>
                   <br />
                 </mat-form-field>
@@ -70,16 +74,19 @@
                 </mat-form-field>
                 <br />
                 <mat-form-field>
-                  <input matInput id="sample_form_date_collection" formControlName="sample_form_date_collection" type="datetime"
-                    required>
-                  <mat-placeholder class="placeholder">Date of Sample Collection</mat-placeholder>
-                  <!-- TEGAN CHECK THIS-->
+                  <input matInput [matDatepicker]="sample_form_date_collection" id="sample_form_date_collection"
+                    formControlName="sample_form_date_collection" type="datetime"
+                    placeholder="Date of Sample Collection" required>
+                  <mat-datepicker-toggle matSuffix [for]="sample_form_date_collection"></mat-datepicker-toggle>
+                  <mat-datepicker #sample_form_date_collection></mat-datepicker>
                   <br />
                 </mat-form-field>
                 <br />
                 <mat-form-field>
-                  <input matInput id="sample_form_date_sent" formControlName="sample_form_date_sent" type="datetime" required>
-                  <mat-placeholder class="placeholder">Date Sent</mat-placeholder>
+                  <input matInput [matDatepicker]="sample_form_date_sent" id="sample_form_date_sent"
+                    formControlName="sample_form_date_sent" type="datetime" placeholder="Date Sent" required>
+                  <mat-datepicker-toggle matSuffix [for]="sample_form_date_sent"></mat-datepicker-toggle>
+                  <mat-datepicker #sample_form_date_sent></mat-datepicker>
                   <br />
                 </mat-form-field>
                 <br />
@@ -97,22 +104,18 @@
                   </mat-panel-description>
                 </mat-expansion-panel-header>
 
-                <label for="sample_type_soil">Soil</label><input id="sample_type_soil" formControlName="sample_type_soil"
-                  type="checkbox" /><br />
-                <label for="sample_type_stems">Stems</label><input id="sample_type_stems" formControlName="sample_type_stems"
-                  type="checkbox" /><br />
-                <label for="sample_type_roots">Roots</label><input id="sample_type_roots" formControlName="sample_type_roots"
-                  type="checkbox" /><br />
-                <label for="sample_type_twigs">Twigs/Branches</label><input id="sample_type_twigs"
-                formControlName="sample_type_twigs" type="checkbox" /><br />
-                <label for="sample_type_leaves">Leaves/Needles</label><input id="sample_type_leaves"
-                formControlName="sample_type_leaves" type="checkbox" /><br />
-                <label for="sample_type_seedlings">Seedlings/Cuttings</label><input id="sample_type_seedlings"
-                formControlName="sample_type_seedlings" type="checkbox" /><br />
-                <label for="sample_type_media">Media Plates</label><input id="sample_type_media"
-                formControlName="sample_type_media" type="checkbox" /><br />
-                <label for="sample_type_water">Water</label><input id="sample_type_water" formControlName="sample_type_water"
-                  type="checkbox" /><br />
+                <mat-checkbox id="sample_type_soil" formControlName="sample_type_soil">Soil</mat-checkbox><br />
+                <mat-checkbox id="sample_type_stems" formControlName="sample_type_stems">Stems</mat-checkbox><br />
+                <mat-checkbox id="sample_type_roots" formControlName="sample_type_roots">Roots</mat-checkbox><br />
+                <mat-checkbox id="sample_type_twigs" formControlName="sample_type_twigs">Twigs/Branches</mat-checkbox>
+                <br />
+                <mat-checkbox id="sample_type_leaves" formControlName="sample_type_leaves">Leaves/Needles</mat-checkbox>
+                <br />
+                <mat-checkbox id="sample_type_seedlings" formControlName="sample_type_seedlings">Seedlings/Cuttings
+                </mat-checkbox><br />
+                <mat-checkbox id="sample_type_media" formControlName="sample_type_media">Media Plates</mat-checkbox>
+                <br />
+                <mat-checkbox id="sample_type_water" formControlName="sample_type_water">Water</mat-checkbox><br />
 
               </mat-expansion-panel>
 
@@ -127,24 +130,21 @@
                   </mat-panel-description>
                 </mat-expansion-panel-header>
 
-                <label for="symptom_wilt">Wilt</label><input id="symptom_wilt" formControlName="symptom_wilt"
-                  type="checkbox" /><br />
-                <label for="symptom_stunting">Stunting</label><input id="symptom_stunting" formControlName="symptom_stunting"
-                  type="checkbox" /><br />
-                <label for="symptom_leafspot">Leaf Spot</label><input id="symptom_leafspot" formControlName="symptom_leafspot"
-                  type="checkbox" /><br />
-                <label for="symptom_rootrot">Root rot</label><input id="symptom_rootrot" formControlName="symptom_rootrot"
-                  type="checkbox" /><br />
-                <label for="symptom_dieback">Die-Back</label><input id="symptom_dieback" formControlName="symptom_dieback"
-                  type="checkbox" /><br />
-                <label for="symptom_cankers">Cankers</label><input id="symptom_cankers" formControlName="symptom_cankers"
-                  type="checkbox" /><br />
-                <label for="symptom_death">Death</label><input id="symptom_death" formControlName="symptom_death"
-                  type="checkbox" /><br />
-                <label for="symptom_wood">Wood borer damage/holes/tunnels/frass(sawdust)</label><input id="symptom_wood"
-                formControlName="symptom_wood" type="checkbox" /><br />
-                <label for="symptom_other">Other</label><input id="symptom_other" formControlName="symptom_other"
-                  type="text" /><br />
+                <mat-checkbox id="symptom_wilt" formControlName="symptom_wilt">Wilt</mat-checkbox><br />
+                <mat-checkbox id="symptom_stunting" formControlName="symptom_stunting">Stunting</mat-checkbox><br />
+                <mat-checkbox id="symptom_leafspot" formControlName="symptom_leafspot">Leaf Spot</mat-checkbox><br />
+                <mat-checkbox id="symptom_rootrot" formControlName="symptom_rootrot">Root rot</mat-checkbox><br />
+                <mat-checkbox id="symptom_dieback" formControlName="symptom_dieback">Die-Back</mat-checkbox><br />
+                <mat-checkbox id="symptom_cankers" formControlName="symptom_cankers">Cankers</mat-checkbox><br />
+                <mat-checkbox id="symptom_death" formControlName="symptom_death">Death</mat-checkbox><br />
+                <mat-checkbox id="symptom_wood" formControlName="symptom_wood">Wood borer
+                  damage/holes/tunnels/frass(sawdust)</mat-checkbox><br />
+
+                <mat-form-field>
+                  <input matInput id="symptom_other" formControlName="symptom_other" type="text" required>
+                  <mat-placeholder class="placeholder">Other</mat-placeholder>
+                  <br />
+                </mat-form-field>
 
               </mat-expansion-panel>
 
@@ -159,12 +159,12 @@
                   </mat-panel-description>
                 </mat-expansion-panel-header>
 
-                <label for="distribution_localized">Localized (Single Plant)</label><input id="distribution_localized"
-                formControlName="distribution_localized" type="checkbox" /><br />
-                <label for="distributed_scattered">Scattered Plants</label><input id="distributed_scattered"
-                formControlName="distributed_scattered" type="checkbox" /><br />
-                <label for="distributed_general">General</label><input id="distributed_general"
-                formControlName="distributed_general" type="checkbox" /><br />
+                <mat-checkbox id="distribution_localized" formControlName="distribution_localized">Localized (Single
+                  Plant)</mat-checkbox><br />
+                <mat-checkbox id="distributed_scattered" formControlName="distributed_scattered">Scattered Plants
+                </mat-checkbox><br />
+                <mat-checkbox id="distributed_general" formControlName="distributed_general">General</mat-checkbox>
+                <br />
 
               </mat-expansion-panel>
 
@@ -187,16 +187,20 @@
                 </mat-form-field>
                 <br />
                 <mat-form-field>
-                  <input matInput id="conditions_problem_noticed" formControlName="conditions_problem_noticed" type="text"
-                    required>
-                  <mat-placeholder class="placeholder">Date problem was first noticed</mat-placeholder>
+                  <input matInput [matDatepicker]="conditions_problem_noticed" id="conditions_problem_noticed"
+                    formControlName="conditions_problem_noticed" type="datetime"
+                    placeholder="Date problem was first noticed" required>
+                  <mat-datepicker-toggle matSuffix [for]="conditions_problem_noticed"></mat-datepicker-toggle>
+                  <mat-datepicker #conditions_problem_noticed></mat-datepicker>
                   <br />
                 </mat-form-field>
                 <br />
                 <mat-form-field>
-                  <input matInput id="conditions_date_planted" formControlName="conditions_date_planted" type="text"
+                  <input matInput [matDatepicker]="conditions_date_planted" id="conditions_date_planted"
+                    formControlName="conditions_date_planted" type="datetime" placeholder="Date plants were planted"
                     required>
-                  <mat-placeholder class="placeholder">Date plants were planted</mat-placeholder>
+                  <mat-datepicker-toggle matSuffix [for]="conditions_date_planted"></mat-datepicker-toggle>
+                  <mat-datepicker #conditions_date_planted></mat-datepicker>
                   <br />
                 </mat-form-field>
                 <br />
@@ -208,7 +212,8 @@
                 </mat-form-field>
                 <br />
                 <mat-form-field>
-                  <input matInput id="conditions_weather_prior" formControlName="conditions_weather_prior" type="text" required>
+                  <input matInput id="conditions_weather_prior" formControlName="conditions_weather_prior" type="text"
+                    required>
                   <mat-placeholder class="placeholder">Weather conditions prior to symptom development</mat-placeholder>
                   <br />
                 </mat-form-field>
@@ -222,7 +227,8 @@
                 </mat-form-field>
                 <br />
                 <mat-form-field>
-                  <input matInput id="conditions_additional" formControlName="conditions_additional" type="text" required>
+                  <input matInput id="conditions_additional" formControlName="conditions_additional" type="text"
+                    required>
                   <mat-placeholder class="placeholder">Additional information (Please include any information about
                     planting
                     conditions, fungicide use, herbicide user, changes to fertigation, routine disruptions ...)t
@@ -270,8 +276,8 @@
             </mat-accordion>
             <br />
             <br />
-            <input id="sample_form_submit" type="submit" class="btn btn-default" value="Submit"
-              routerLink="/sample-form" />
+            <p *ngIf="errors"> There is information missing</p>
+            <input id="sample_form_submit" type="submit" class="btn btn-default" value="Submit" />
           </form>
           <br />
         </div>

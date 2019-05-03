@@ -10,7 +10,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatTableModule} from '@angular/material/table';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatGridListModule} from '@angular/material/grid-list';
-import {MatSelectModule, MatSnackBarModule, MatDialogModule} from '@angular/material';
+import {MatSelectModule, MatSnackBarModule, MatDialogModule, MatNativeDateModule, MatDatepickerModule, MatCheckboxModule} from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgModule } from '@angular/core';
@@ -32,7 +32,10 @@ import { NgModule } from '@angular/core';
         MatSnackBarModule,
         MatDialogModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatNativeDateModule,
+        MatDatepickerModule,
+        MatCheckboxModule
     ],
 
     exports: [MatMenuModule,
@@ -51,7 +54,10 @@ import { NgModule } from '@angular/core';
         MatSnackBarModule,
         MatDialogModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatNativeDateModule,
+        MatDatepickerModule,
+        MatCheckboxModule
     ]
 })
 
