@@ -1,0 +1,31 @@
+//Footer Design
+.footer {
+    background-color: rgb(36, 34, 34);
+
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    width: 100%;
+}
+
+
+.content {
+    flex: 1 1 auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 50%;
+}
+
+#footer_content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer #logo {
+    height: 2rem;
+    width: 5rem;
+}
+
+i {
+    padding: 1rem;
+    float: right;
+}
