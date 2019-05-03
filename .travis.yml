@@ -7,7 +7,6 @@ language: node_js
       - master
 
   before_script:
-    - cd FABI-Web
     - npm install -g @angular/cli
 
   script:

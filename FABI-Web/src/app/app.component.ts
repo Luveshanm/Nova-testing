@@ -8,7 +8,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'FABI-Web';
   // testing
-  // testing
-  // testing
-  // testing again
 }
